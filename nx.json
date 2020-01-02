@@ -1,0 +1,33 @@
+{
+  "npmScope": "nx-monorepo",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "app-e2e": {
+      "tags": []
+    },
+    "app": {
+      "tags": []
+    },
+    "api": {
+      "tags": []
+    },
+    "ui": {
+      "tags": []
+    },
+    "theme": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    },
+    "state": {
+      "tags": []
+    }
+  }
+}

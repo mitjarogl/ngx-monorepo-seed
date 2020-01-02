@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@include mat-core();
+@import 'styles/shame';
+
+@import 'styles/main';
+
+

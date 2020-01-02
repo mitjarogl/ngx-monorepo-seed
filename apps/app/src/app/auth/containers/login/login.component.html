@@ -1,0 +1,31 @@
+<form (ngSubmit)="onLogin()" [formGroup]="form">
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Enter your email" type="email" formControlName="email" [formGroup]="form">
+            <mat-hint *ngIf="email.invalid && (email.dirty || email.touched) && email.errors.email">Email must be
+                valid.
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Enter your password" type="password" formControlName="password"
+                   [formGroup]="form">
+            <mat-hint *ngIf="password.invalid && (password.dirty || password.touched)">Password must be valid.
+            </mat-hint>
+        </mat-form-field>
+
+    </div>
+    <div>
+        <div>
+            {{responseMessage$|async}}
+        </div>
+        <button class="submit-button" type="submit" mat-stroked-button [disabled]="!form.valid"> Login
+        </button>
+    </div>
+</form>
+
+
+
+
