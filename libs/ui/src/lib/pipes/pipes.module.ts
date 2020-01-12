@@ -10,6 +10,11 @@ import { SumByArrayPropPipe } from './sum-by-array-prop.pipe';
 import { ReplacePipe } from './replace.pipe';
 import { FindByInArrayPipe } from './find-by-in-array.pipe';
 import { TruncatePipe } from './truncate.pipe';
+import { FindMaxValueInArrayPipe } from './find-max-value-in-array.pipe';
+import { PercentageChangePipe } from './percentage-change.pipe';
+import { DaysOrHoursBetweenPipe } from './days-or-hours-between.pipe';
+import { EnumTitlePipe } from './enum-title.pipe';
+import { ImageSrcTransformPipe } from './image-src-transform.pipe';
 
 
 const PIPES = [
@@ -24,6 +29,11 @@ const PIPES = [
   ReplacePipe,
   FindByInArrayPipe,
   TruncatePipe,
+  FindMaxValueInArrayPipe,
+  PercentageChangePipe,
+  DaysOrHoursBetweenPipe,
+  EnumTitlePipe,
+  ImageSrcTransformPipe,
 ];
 
 @NgModule({

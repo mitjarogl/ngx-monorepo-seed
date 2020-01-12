@@ -1,0 +1,20 @@
+<form [formGroup]="form">
+  <div class="dropzone" *ngIf="!form.value.image" nxFileDropZone (hovered)="toggleHover($event)"
+       [class.hovering]="isHovering"
+       (dropped)="onFileChange($event)" (click)="imgFileInput.click()">
+    <button mat-icon-button>
+      <mat-icon>photo_size_select_actual</mat-icon>
+    </button>
+    <h3 class="subheading-2">Drop project image here</h3>
+  </div>
+  <section *ngIf="form.value.image" class="text-center">
+    <button style="position: absolute;" mat-icon-button disableRipple="true" (click)="clearImage()">
+      <mat-icon class="btn-close">close</mat-icon>
+    </button>
+    <img src="{{form.value.image|imageSrcTransform}}" width="400px">
+  </section>
+  <div class="mat-form-field">
+    <input hidden type="file" #imgFileInput (change)="onFileChange($event.target.files)"
+           accept="image/jpeg, image/png"/>
+  </div>
+</form>
