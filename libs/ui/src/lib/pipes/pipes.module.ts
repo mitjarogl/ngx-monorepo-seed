@@ -15,6 +15,7 @@ import { PercentageChangePipe } from './percentage-change.pipe';
 import { DaysOrHoursBetweenPipe } from './days-or-hours-between.pipe';
 import { EnumTitlePipe } from './enum-title.pipe';
 import { ImageSrcTransformPipe } from './image-src-transform.pipe';
+import { InitialsPipe } from './initials.pipe';
 
 
 const PIPES = [
@@ -34,6 +35,7 @@ const PIPES = [
   DaysOrHoursBetweenPipe,
   EnumTitlePipe,
   ImageSrcTransformPipe,
+  InitialsPipe
 ];
 
 @NgModule({

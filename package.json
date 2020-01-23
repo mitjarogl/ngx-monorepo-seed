@@ -1,6 +1,6 @@
 {
   "name": "nx-monorepo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "author": "Mitja Rogl",
   "scripts": {
@@ -31,6 +31,8 @@
     "start:app": "ng serve app --hmr --port=4200 --host 0.0.0.0 --disable-host-check",
     "build:api:staging": "ng build api --maxWorkers=2 --configuration=staging",
     "build:api:production": "ng build api --maxWorkers=2 --configuration=production",
+    "build:app:staging": "ng build app --configuration=staging",
+    "build:app:production": "ng build app --configuration=production",
     "start:api": "node dist/apps/api/main.js"
   },
   "private": true,
@@ -72,7 +74,8 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.4.0",
     "swagger-ui-express": "^4.1.2",
-    "zone.js": "^0.9.1"
+    "zone.js": "^0.9.1",
+    "@ngx-translate/core": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.3",

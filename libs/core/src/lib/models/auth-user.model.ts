@@ -3,6 +3,8 @@ export interface AuthUser {
   email: string;
   firstname: string;
   lastname: string;
+  role: any;
+  image: string;
   accessToken: string;
   refreshToken?: string;
 }

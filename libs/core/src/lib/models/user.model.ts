@@ -3,6 +3,7 @@ export interface User {
   firstname?: string;
   lastname?: string;
   image?: string;
+  role?: any; // FIXME Add Role model
   email?: string;
 }
 

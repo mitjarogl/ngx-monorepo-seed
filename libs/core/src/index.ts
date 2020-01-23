@@ -5,6 +5,7 @@ export * from './lib/router.animations';
 // Enums
 export * from './lib/enums/severity.enum';
 export * from './lib/enums/screen-size-type.enum';
+export * from './lib/enums/app-lang.enum';
 
 // Filters
 

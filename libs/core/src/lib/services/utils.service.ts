@@ -338,4 +338,16 @@ export class UtilService {
     ? str[0].toUpperCase() +
     str.slice(1).toLowerCase()
     : '';
+
+  enumToPrettyString(str: any): string {
+    if (!str) {
+      return '';
+    }
+    str = this.replaceAll(str.toString().toLowerCase(), '_', ' ');
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  replaceAll(str: string, find: string, replace: string): string {
+    return str.replace(new RegExp(find, 'g'), replace);
+  }
 }
