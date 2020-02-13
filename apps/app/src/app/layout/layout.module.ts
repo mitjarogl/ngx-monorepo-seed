@@ -4,7 +4,6 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { MaterialModule } from '@nx/ui';
 import { ComponentsModule } from '@nx/ui';
-import { SelectAutocompleteModule } from 'mat-select-autocomplete';
 
 
 @NgModule({
@@ -14,7 +13,6 @@ import { SelectAutocompleteModule } from 'mat-select-autocomplete';
     ComponentsModule,
     LayoutRoutingModule,
     MaterialModule,
-    SelectAutocompleteModule
   ],
 })
 export class LayoutModule {

@@ -1,5 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'nx-ui-confirmation-dialog',

@@ -30,7 +30,7 @@ export class ImageDropFormComponent implements OnInit, OnChanges, OnDestroy {
   form: FormGroup;
   items: FormArray;
   isHovering: boolean;
-  @ViewChild('imgFileInput', { static: false }) fileInput: ElementRef;
+  @ViewChild('imgFileInput') fileInput: ElementRef;
 
   constructor(private readonly fb: FormBuilder) {
   }

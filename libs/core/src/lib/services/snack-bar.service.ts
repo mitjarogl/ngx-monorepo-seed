@@ -1,5 +1,5 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
 import { Severity } from '../enums/severity.enum';
 
 @Injectable({

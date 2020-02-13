@@ -1,11 +1,11 @@
 import { IsString } from 'class-validator';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 
 export class RefreshTokenDto {
 
   @IsString()
-  @ApiModelProperty({ required: true })
+  @ApiProperty({ required: true })
   readonly refreshToken: string;
 }
 

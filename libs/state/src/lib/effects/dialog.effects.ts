@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import * as DialogActions from '../actions/dialog.actions';
 import {combineLatest, of} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
-import {MatDialog, MatDialogConfig} from '@angular/material';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import { ConfirmationDialogComponent } from "@nx/ui";
 
