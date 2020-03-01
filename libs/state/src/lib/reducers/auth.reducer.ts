@@ -4,15 +4,19 @@ import { AuthUser } from '@nx/core';
 
 export interface State {
   authenticated: boolean;
-  authUser?: AuthUser;
+  authUser?: Partial<AuthUser> | null;
   token?: string;
   message?: string;
-  sendResetPasswordEmailMessage?: string,
-  resetPasswordMessage?: string
+  sendResetPasswordEmailMessage?: string;
+  resetPasswordMessage?: string;
 }
 
-const initialState: State = { authenticated: false, authUser: null, token: null, message: null };
-
+const initialState: State = {
+  authenticated: false,
+  authUser: null,
+  token: undefined,
+  message: undefined
+};
 
 export function reducer(state = initialState, action: any): State {
   switch (action.type) {
@@ -22,7 +26,7 @@ export function reducer(state = initialState, action: any): State {
         authenticated: true,
         authUser: action.payload,
         token: action.payload.accessToken,
-        message: null,
+        message: undefined
       };
     case AuthActions.AuthActionTypes.UPDATE_ME_SUCCESS:
       return {
@@ -35,35 +39,41 @@ export function reducer(state = initialState, action: any): State {
           lastname: action.payload.updated.lastname,
           email: action.payload.updated.email,
           role: action.payload.updated.role.name,
-          image: action.payload.updated.image,
-        },
+          image: action.payload.updated.image
+        }
       };
     case AuthActions.AuthActionTypes.LOGIN_FAIL:
       return {
         ...state,
         authenticated: false,
-        message: action.payload,
+        message: action.payload
       };
     case AuthActionTypes.SEND_RESET_PASSWORD_EMAIL_SUCCESS:
     case AuthActionTypes.SEND_RESET_PASSWORD_EMAIL_FAIL:
       return {
-        ...state, authenticated: false, sendResetPasswordEmailMessage: action.payload,
+        ...state,
+        authenticated: false,
+        sendResetPasswordEmailMessage: action.payload
       };
     case AuthActionTypes.RESET_PASSWORD_SUCCESS:
     case AuthActionTypes.RESET_PASSWORD_FAIL: {
-      return { ...state, authenticated: false, resetPasswordMessage: action.payload };
+      return {
+        ...state,
+        authenticated: false,
+        resetPasswordMessage: action.payload
+      };
     }
     case AuthActions.AuthActionTypes.REGISTER_SUCCESS:
       return {
         ...state,
         authenticated: false,
-        message: action.payload,
+        message: action.payload
       };
     case AuthActions.AuthActionTypes.REGISTER_FAIL:
       return {
         ...state,
         authenticated: false,
-        message: action.payload,
+        message: action.payload
       };
     case AuthActions.AuthActionTypes.REFRESH_TOKEN_SUCCESS:
       return {
@@ -72,17 +82,16 @@ export function reducer(state = initialState, action: any): State {
         token: action.payload.accessToken,
         authUser: {
           ...state.authUser,
-          ...action.payload,
+          ...action.payload
         },
-        message: null,
+        message: undefined
       };
     case AuthActions.AuthActionTypes.CLEAR_AUTH_MESSAGE:
       return {
         ...state,
-        message: null,
+        message: undefined
       };
     default:
       return state;
   }
 }
-

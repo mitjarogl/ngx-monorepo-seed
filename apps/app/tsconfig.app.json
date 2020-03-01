@@ -3,19 +3,9 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/app",
     "baseUrl": "./src",
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   },
-  "files": [
-    "src/main.ts",
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "**/*.ts"
-  ],
-  "exclude": [
-    "src/test-setup.ts",
-    "**/*.spec.ts"
-  ]
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["**/*.ts"],
+  "exclude": ["src/test-setup.ts", "**/*.spec.ts"]
 }

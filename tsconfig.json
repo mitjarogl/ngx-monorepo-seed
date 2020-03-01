@@ -10,25 +10,15 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@nx/core": [
-        "libs/core/src/index.ts",
-        "../../../libs/core/src/index.ts"
-      ],
-      "@nx/ui": [
-        "libs/ui/src/index.ts",
-        "../../../libs/ui/src/index.ts"
-      ],
+      "@nx/core": ["libs/core/src/index.ts", "../../../libs/core/src/index.ts"],
+      "@nx/ui": ["libs/ui/src/index.ts", "../../../libs/ui/src/index.ts"],
       "@nx/theme": [
         "libs/theme/src",
         "../../../libs/theme/src/index.ts",
@@ -40,8 +30,13 @@
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "angularCompilerOptions": {
+    "annotateForClosureCompiler": true,
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "strictInjectionParameters": true,
+    "enableResourceInlining": true,
+    "fullTemplateTypeCheck": true
+  },
+  "exclude": ["node_modules", "tmp"]
 }

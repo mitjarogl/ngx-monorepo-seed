@@ -14,15 +14,15 @@ import * as AuthActions from '@nx/state';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
-
   hidePassword: boolean;
-  responseMessage$: Observable<string>;
+  responseMessage$: Observable<string | undefined>;
   form: FormGroup;
 
   constructor(
     private readonly fb: FormBuilder,
-    private store: Store<AppState>) {
-    this.responseMessage$ = store.pipe(select(state => state.auth.message));
+    private store: Store<AppState>
+  ) {
+    this.responseMessage$ = store.pipe(select(state => state?.auth?.message));
   }
 
   ngOnInit() {
@@ -32,13 +32,15 @@ export class LoginComponent implements OnInit {
   onLogin() {
     const email = this.form.value.email;
     const password = this.form.value.password;
-    this.store.dispatch(new AuthActions.Login({email: email, password: password}));
+    this.store.dispatch(
+      new AuthActions.Login({ email: email, password: password })
+    );
   }
 
   createForm() {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -49,6 +51,4 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.form.get('password');
   }
-
-
 }

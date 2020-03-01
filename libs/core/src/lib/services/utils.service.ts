@@ -2,15 +2,13 @@ import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import * as moment from 'moment';
 import { formatCurrency } from '@angular/common';
 
-
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UtilService {
   readonly DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
 
-  constructor(@Inject(LOCALE_ID) private locale: string) {
-  }
+  constructor(@Inject(LOCALE_ID) private locale: string) {}
 
   formatDate(date: Date, format: string): string {
     return moment(date).format(format);
@@ -100,9 +98,13 @@ export class UtilService {
 
   getCurrentMonthAndYear(date?: Date): string {
     if (date) {
-      return moment(date).format('MMMM YYYY').toString();
+      return moment(date)
+        .format('MMMM YYYY')
+        .toString();
     } else {
-      return moment().format('MMMM YYYY').toString();
+      return moment()
+        .format('MMMM YYYY')
+        .toString();
     }
   }
 
@@ -119,26 +121,40 @@ export class UtilService {
   }
 
   isDateNextDay(date1: Date, date2: Date): boolean {
-    return moment(date1).add(1, 'day').isSame(date2, 'day');
+    return moment(date1)
+      .add(1, 'day')
+      .isSame(date2, 'day');
   }
 
   addDays(numOfDays: number): Date {
-    return moment().add(numOfDays, 'days').toDate();
+    return moment()
+      .add(numOfDays, 'days')
+      .toDate();
   }
 
   addMonths(numOfMonths: number): Date {
-    return moment().add(numOfMonths, 'months').toDate();
+    return moment()
+      .add(numOfMonths, 'months')
+      .toDate();
   }
 
   getNextDay(date: Date): Date {
-    return moment(date).add(1, 'days').toDate();
+    return moment(date)
+      .add(1, 'days')
+      .toDate();
   }
 
-  isDateBetweenMultipleDateRanges(currentDate: Date, events: { start: Date, end: Date }[]): boolean {
-    let inRange: boolean;
+  isDateBetweenMultipleDateRanges(
+    currentDate: Date,
+    events: { start: Date; end: Date }[]
+  ): boolean {
+    let inRange = false;
     for (const event of events) {
-      inRange = this.getDateFromDateTime(currentDate) >= this.getDateFromDateTime(event.start) &&
-        this.getDateFromDateTime(currentDate) <= this.getDateFromDateTime(event.end);
+      inRange =
+        this.getDateFromDateTime(currentDate) >=
+          this.getDateFromDateTime(event.start) &&
+        this.getDateFromDateTime(currentDate) <=
+          this.getDateFromDateTime(event.end);
       // console.log(event.start);
       if (inRange) {
         return inRange;
@@ -151,20 +167,21 @@ export class UtilService {
     return currentDate >= start && currentDate <= end;
   }
 
-  getEarlistAndLatestDate(schedulers: { start, end }[]): { earliest, latest } {
+  getEarlistAndLatestDate(schedulers: { start; end }[]): { earliest; latest } {
     if (!schedulers.length) {
       return { earliest: null, latest: null };
     }
-    const startDates = schedulers.map((schedule) => schedule.start);
-    const endDates = schedulers.map((schedule) => schedule.end);
-    const earliest = startDates.reduce((a, b) => a < b ? a : b);
-    const latest = endDates.reduce((a, b) => a > b ? a : b);
+    const startDates = schedulers.map(schedule => schedule.start);
+    const endDates = schedulers.map(schedule => schedule.end);
+    const earliest = startDates.reduce((a, b) => (a < b ? a : b));
+    const latest = endDates.reduce((a, b) => (a > b ? a : b));
     return { earliest, latest };
   }
 
-  isDateRangeOverlap(dateRanges: { start: Date, end: Date }[]): { overlap: boolean, ranges: any[] } {
+  isDateRangeOverlap(
+    dateRanges: { start: Date; end: Date }[]
+  ): { overlap: boolean; ranges: any[] } {
     const sortedRanges = dateRanges.sort((previous, current) => {
-
       const previousTime = previous.start.getTime();
       const currentTime = current.start.getTime();
 
@@ -179,37 +196,46 @@ export class UtilService {
       return 1;
     });
 
-    const result = sortedRanges.reduce((acc, current, idx, arr) => {
-      // get the previous range
-      if (idx === 0) {
+    const result = sortedRanges.reduce(
+      (acc: any, current, idx, arr) => {
+        // get the previous range
+        if (idx === 0) {
+          return acc;
+        }
+        const previous = arr[idx - 1];
+
+        // check for any overlap
+        const previousEnd = previous.end.getTime();
+        const currentStart = current.start.getTime();
+        const overlap = previousEnd >= currentStart;
+
+        if (overlap) {
+          acc.overlap = true;
+          acc.ranges.push({
+            previous: previous,
+            current: current
+          });
+        }
+
         return acc;
-      }
-      const previous = arr[idx - 1];
-
-      // check for any overlap
-      const previousEnd = previous.end.getTime();
-      const currentStart = current.start.getTime();
-      const overlap = (previousEnd >= currentStart);
-
-      if (overlap) {
-        acc.overlap = true;
-        acc.ranges.push({
-          previous: previous,
-          current: current,
-        });
-      }
-
-      return acc;
-
-    }, { overlap: false, ranges: [] });
-
+      },
+      { overlap: false, ranges: [] }
+    );
 
     return result;
-
   }
 
   getVideoFileTypes(): string[] {
-    return ['mp4', 'mov', 'avi', 'mkv', 'video/mp4', 'video/mov', 'video/avi', 'video/mkv'];
+    return [
+      'mp4',
+      'mov',
+      'avi',
+      'mkv',
+      'video/mp4',
+      'video/mov',
+      'video/avi',
+      'video/mkv'
+    ];
   }
 
   getImageFileTypes(): string[] {
@@ -222,7 +248,6 @@ export class UtilService {
 
   isMediaTypeImage(mediaType: string): boolean {
     return this.getImageFileTypes().indexOf(mediaType) !== -1;
-
   }
 
   sortArrayBy<T>(array: T[], property: string, type: string = 'asc'): T[] {
@@ -237,42 +262,64 @@ export class UtilService {
     if (!string) {
       return false;
     }
-    const regex = '^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)?$';
+    const regex =
+      '^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)?$';
     return string.match(regex) !== null;
   }
 
   getStartOfDay(date: Date): Date {
-    return moment(date).startOf('day').toDate();
+    return moment(date)
+      .startOf('day')
+      .toDate();
   }
 
   getStartOfMonth(date: Date): Date {
-    return moment(date).startOf('month').toDate();
+    return moment(date)
+      .startOf('month')
+      .toDate();
   }
 
   getEndOfMonth(date: Date): Date {
-    return moment(date).endOf('month').toDate();
+    return moment(date)
+      .endOf('month')
+      .toDate();
   }
 
   getStartOfWeek(year: number, weekNumber: number): Date {
-    return moment().year(year).week(weekNumber).startOf('week').toDate();
+    return moment()
+      .year(year)
+      .week(weekNumber)
+      .startOf('week')
+      .toDate();
   }
 
   getEndOfWeek(year: number, weekNumber: number): Date {
-    return moment().year(year).week(weekNumber).endOf('week').toDate();
+    return moment()
+      .year(year)
+      .week(weekNumber)
+      .endOf('week')
+      .toDate();
   }
 
-  parseYearAndWeekNumberFromWeekString(weekString: string): { year, weekNumber } {
+  parseYearAndWeekNumberFromWeekString(
+    weekString: string
+  ): { year; weekNumber } {
     const year = weekString.split('-')[0];
     const weekNumber = weekString.split('-W')[1];
     return {
       year,
-      weekNumber,
+      weekNumber
     };
   }
 
   arrayToMatrix(arr, width): any[] {
-    return arr.reduce((rows, key, index) => (index % width === 0 ? rows.push([key])
-      : rows[rows.length - 1].push(key)) && rows, []);
+    return arr.reduce(
+      (rows, key, index) =>
+        (index % width === 0
+          ? rows.push([key])
+          : rows[rows.length - 1].push(key)) && rows,
+      []
+    );
   }
 
   getLocalISODateTime(date: Date, endOfDay?: boolean): string {
@@ -283,7 +330,7 @@ export class UtilService {
     return dateFormatted.toISOString();
   }
 
-  getLocalISODate(dateTime: Date): string {
+  getLocalISODate(dateTime: Date): string | null {
     if (!(dateTime instanceof Date)) {
       return null;
     }
@@ -302,7 +349,11 @@ export class UtilService {
     return array == null || array.length === 0;
   }
 
-  toggleArrayValue<T>(originalArray: Array<T>, value: T, compare?: (v1: T, v2: T) => boolean): Array<T> {
+  toggleArrayValue<T>(
+    originalArray: Array<T>,
+    value: T,
+    compare?: (v1: T, v2: T) => boolean
+  ): Array<T> {
     if (!originalArray) {
       return [];
     }
@@ -327,17 +378,17 @@ export class UtilService {
   }
 
   extractLastPathFromUrl(path: string): string {
-    path = path.replace(/(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}/g, ''); // Replace GUID
+    path = path.replace(
+      /(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}/g,
+      ''
+    ); // Replace GUID
     const splitted = path.split('/');
-    const filtered = splitted.filter((value => value)); // Filter empty values
+    const filtered = splitted.filter(value => value); // Filter empty values
     return filtered[filtered.length - 1];
   }
 
-
-  capitalize = str => str.length
-    ? str[0].toUpperCase() +
-    str.slice(1).toLowerCase()
-    : '';
+  capitalize = str =>
+    str.length ? str[0].toUpperCase() + str.slice(1).toLowerCase() : '';
 
   enumToPrettyString(str: any): string {
     if (!str) {

@@ -3,18 +3,21 @@ import { Injectable } from '@angular/core';
 import { Severity } from '../enums/severity.enum';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SnackBarService {
-
-  constructor(private readonly snackBar: MatSnackBar) {
-  }
+  constructor(private readonly snackBar: MatSnackBar) {}
 
   // TODO Make global configuration
-  open(message?: string, severity?: Severity, duration: number = 2000): void {
-    this.snackBar.open(message, null, {
-      duration: duration, verticalPosition: 'top',
-      panelClass: this.defineSeverityStyleClass(severity),
+  open(
+    message: string,
+    severity: Severity = Severity.INFO,
+    duration: number = 2000
+  ): void {
+    this.snackBar.open(message, undefined, {
+      duration: duration,
+      verticalPosition: 'top',
+      panelClass: this.defineSeverityStyleClass(severity)
     });
   }
 
@@ -34,5 +37,4 @@ export class SnackBarService {
         return 'snack-bar-info';
     }
   }
-
 }

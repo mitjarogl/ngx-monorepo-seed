@@ -1,4 +1,7 @@
-import { AppLoaderActions, AppLoaderActionTypes } from '../actions/loader.actions';
+import {
+  AppLoaderActions,
+  AppLoaderActionTypes
+} from '../actions/loader.actions';
 
 export interface State {
   loadingState: boolean[];
@@ -6,11 +9,10 @@ export interface State {
 
 const initialState: State = { loadingState: [] };
 
-
 export function reducer(state = initialState, action: AppLoaderActions): State {
   switch (action.type) {
     case AppLoaderActionTypes.APP_LOADER_LOADING:
-      let loaders = [];
+      let loaders: boolean[] = [];
       if (action.payload === true) {
         loaders = [...state.loadingState, action.payload];
       } else {
@@ -19,10 +21,9 @@ export function reducer(state = initialState, action: AppLoaderActions): State {
       }
       return {
         ...state,
-        loadingState: loaders,
+        loadingState: loaders
       };
     default:
       return state;
   }
 }
-
