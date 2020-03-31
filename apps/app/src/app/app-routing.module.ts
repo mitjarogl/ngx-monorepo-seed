@@ -6,12 +6,13 @@ import { UnauthorizedComponent } from '@nx/ui';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: 'app/layout/layout.module#LayoutModule',
+    canActivate: [],
+    loadChildren: () =>
+      import('./layout/layout.module').then(m => m.LayoutModule),
   },
-  { path: 'auth', loadChildren: 'app/auth/auth.module#AuthModule' },
   {
-    path: 'not-found',
-    component: NotFoundComponent,
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: 'unauthorized',
@@ -24,5 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

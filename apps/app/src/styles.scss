@@ -1,1 +1,140 @@
 @import '../../../libs/theme/src/theme';
+
+@import 'variables';
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+*:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  background-color: $background-color;
+  color: $basic-font-color;
+}
+
+body {
+  font-size: 1.6em;
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0;
+  font-family: $font;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $background-color;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $grey-light;
+  border-radius: 8px;
+  transition: background-color 200ms ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $grey-lighter;
+}
+
+blockquote {
+  border-left: 0.3rem solid #d1d1d1;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 1rem 1.5rem;
+}
+
+blockquote *:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $action-color;
+}
+
+p {
+  margin: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition-delay: 9999s;
+  transition-delay: 9999s;
+}
+
+code {
+  background: #f4f5f6;
+  border-radius: 0.4rem;
+  font-size: 86%;
+  margin: 0 0.2rem;
+  padding: 0.2rem 0.5rem;
+  white-space: nowrap;
+}
+
+pre {
+  background: #f4f5f6;
+  border-left: 0.3rem solid #00cc8c;
+  overflow-y: hidden;
+}
+
+pre > code {
+  border-radius: 0;
+  display: block;
+  padding: 1rem 1.5rem;
+  white-space: pre;
+}
+
+hr {
+  border: 0;
+  border-top: 0.1rem solid #f4f5f6;
+  margin: 3rem 0;
+}
+
+select {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#d1d1d1" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>')
+    center right no-repeat;
+  padding-right: 3rem;
+}
+
+select:focus {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#9b4dca" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>');
+}
+
+textarea {
+  min-height: 6.5rem;
+}
+
+label,
+legend {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  caret-color: $action-color !important;
+}
+
+fieldset {
+  border-width: 0;
+  padding: 0;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  display: inline;
+}

@@ -1,3 +1,4 @@
+import { MaterialModule } from '@nx/ui';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import { Environment } from '@nx/core';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MaterialModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([CoreEffects, AuthEffects, SnackBarEffects, DialogEffects]),
     !environment.production ? StoreDevtoolsModule.instrument({
