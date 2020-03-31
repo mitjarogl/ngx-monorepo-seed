@@ -6,7 +6,7 @@
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss",
-          "spec": false,
+          "spec": true,
           "changeDetection": "OnPush"
         }
       },
@@ -135,7 +135,8 @@
           "options": {
             "jestConfig": "apps/app/jest.config.js",
             "tsConfig": "apps/app/tsconfig.spec.json",
-            "setupFile": "apps/app/src/test-setup.ts"
+            "setupFile": "apps/app/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       }
@@ -230,7 +231,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/api/jest.config.js",
-            "tsConfig": "apps/api/tsconfig.spec.json"
+            "tsConfig": "apps/api/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -256,14 +258,15 @@
           "options": {
             "jestConfig": "libs/ui/jest.config.js",
             "tsConfig": "libs/ui/tsconfig.spec.json",
-            "setupFile": "libs/ui/src/test-setup.ts"
+            "setupFile": "libs/ui/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss",
-          "spec": false,
+          "spec": true,
           "changeDetection": "OnPush"
         }
       }
@@ -289,14 +292,15 @@
           "options": {
             "jestConfig": "libs/theme/jest.config.js",
             "tsConfig": "libs/theme/tsconfig.spec.json",
-            "setupFile": "libs/theme/src/test-setup.ts"
+            "setupFile": "libs/theme/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss",
-          "spec": false,
+          "spec": true,
           "changeDetection": "OnPush"
         }
       }
@@ -322,7 +326,8 @@
           "options": {
             "jestConfig": "libs/core/jest.config.js",
             "tsConfig": "libs/core/tsconfig.spec.json",
-            "setupFile": "libs/core/src/test-setup.ts"
+            "setupFile": "libs/core/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -353,7 +358,8 @@
           "options": {
             "jestConfig": "libs/state/jest.config.js",
             "tsConfig": "libs/state/tsconfig.spec.json",
-            "setupFile": "libs/state/src/test-setup.ts"
+            "setupFile": "libs/state/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },

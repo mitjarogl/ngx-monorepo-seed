@@ -15,7 +15,7 @@ export class SnackBarService {
     duration: number = 2000
   ): void {
     this.snackBar.open(message, undefined, {
-      duration: duration,
+      duration,
       verticalPosition: 'top',
       panelClass: this.defineSeverityStyleClass(severity)
     });
