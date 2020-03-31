@@ -4,7 +4,7 @@
     "app": {
       "projectType": "application",
       "schematics": {
-        "@nrwl/angular:component": {
+        "@nrwl/schematics:component": {
           "style": "scss",
           "spec": true,
           "changeDetection": "OnPush"
@@ -371,15 +371,20 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/schematics"
   },
   "schematics": {
-    "@nrwl/angular:application": {
+    "@nrwl/schematics:component": {
       "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "style": "scss",
+      "spec": true,
+      "changeDetection": "OnPush"
     },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+    "@nrwl/schematics:library": {
+      "unitTestRunner": "jest",
+      "style": "scss",
+      "spec": true,
+      "changeDetection": "OnPush"
     }
   },
   "defaultProject": "app"

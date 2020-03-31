@@ -30,13 +30,5 @@
       ]
     }
   },
-  "angularCompilerOptions": {
-    "annotateForClosureCompiler": true,
-    "skipTemplateCodegen": true,
-    "strictMetadataEmit": true,
-    "strictInjectionParameters": true,
-    "enableResourceInlining": true,
-    "fullTemplateTypeCheck": true
-  },
   "exclude": ["node_modules", "tmp"]
 }
