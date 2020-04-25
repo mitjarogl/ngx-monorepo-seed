@@ -12,6 +12,7 @@ import { reducers } from './app.state';
 import { environment, EnvironmentImpl } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { Environment } from '@nx/core';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { Environment } from '@nx/core';
       maxAge: 5,
       logOnly: environment.production,
     }) : [],
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [{ provide: Environment, useClass: EnvironmentImpl }],
   exports: [],

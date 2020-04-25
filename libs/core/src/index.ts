@@ -24,3 +24,6 @@ export * from './lib/services/auth.service';
 
 // Validators
 export * from './lib/validators/password-repeat.validator';
+
+// Exceptions
+export * from './lib/exceptions/OperationNotSupported.exception';
